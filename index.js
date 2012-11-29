@@ -1,18 +1,17 @@
 module.exports = function (fn) {
   var src = typeof fn == 'string' ? fn : fn.toString()
-
   src = src.replace(/(\/\*([\s\S]*?)\*\/|\/\/(.*)$)/mg, '') // remove comments
 
-  var m = /^function\s*\w*\s*\(([^\)]*)\)/.exec(src)
-  return m
-    ? m[1].split(',').map(trim).filter(nonEmpty)
-    : []
-}
+  var args = src
+    .slice(src.indexOf('(') + 1, src.indexOf(')'))
+    .split(',')
 
-function trim (s) {
-  return s.trim()
-}
+  var ret = []
 
-function nonEmpty (s) {
-  return !!s
+  for (var i = 0; i < args.length; i++) {
+    var arg = args[i].replace(/\s+/g, '')
+    if (arg) ret.push(arg)
+  }
+
+  return ret
 }
