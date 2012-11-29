@@ -1,0 +1,17 @@
+{
+  "name": "parse-fn-args",
+  "version": "0.0.1",
+  "author": "Eldar Gabdullin <eldargab@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eldargab/parse-fn-args"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  }
+}

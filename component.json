@@ -1,0 +1,11 @@
+{
+  "name": "parse-fn-args",
+  "repo": "eldargab/parse-fn-args",
+  "description": "Parses function arguments",
+  "version": "0.0.1",
+  "keywords": ["function", "arguments", "utility"],
+  "scripts": [
+    "index.js"
+  ],
+  "license": "MIT"
+}
