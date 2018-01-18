@@ -1,10 +1,16 @@
-module.exports = function (fn) {
-  var src = typeof fn == 'string' ? fn : fn.toString()
-  src = src.replace(/(\/\*([\s\S]*?)\*\/|\/\/(.*)$)/mg, '') // remove comments
+module.exports = function parseFnArgs(fn) {
+  var src = fn.toString()
 
-  src = src
-    .slice(src.indexOf('(') + 1, src.indexOf(')'))
-    .replace(/\s+/g, '')
+  // remove comments
+  src = src.replace(/(\/\*([\s\S]*?)\*\/|\/\/(.*)$)/mg, '')
 
-  return src ? src.split(',') : []
+  var bi = src.indexOf('(')
+
+  var args = bi >= 0
+    ? src.slice(bi + 1, src.indexOf(')'))
+    : src.slice(0, src.indexOf('=>'))
+
+  args = args.replace(/\s+/g, '')
+
+  return args ? args.split(',') : []
 }
