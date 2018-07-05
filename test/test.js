@@ -23,6 +23,7 @@ describe('parse-fn-args', function () {
     parse((a, b) => a + b).should.eql(['a', 'b'])
     parse(a => a).should.eql(['a'])
     parse(() => console.log(1)).should.eql([])
+    parse(a => console.log(a)).should.eql(['a'])
   })
 
 
